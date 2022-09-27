@@ -17,7 +17,7 @@
 					<!-- 当前二级分类下的三级分类列表-->
 					<view class="cate-lv3-list">
 						<view class="cate-lv3-item" v-for="(item3,i3) in item2.children" :key="i3" @click="gotoGoodList(item3)">
-							<image :src="item3.cat_icon"></image>
+							<image :src="item3.cat_icon||defaultPic"></image>
 							<text>{{item3.cat_name}}</text>
 						</view>						
 					</view>
@@ -34,6 +34,7 @@
 	export default {
 		data() {
 			return {
+				defaultPic:'https://img3.doubanio.com/f/movie/8dd0c794499fe925ae2ae89ee30cd225750457b4/pics/movie/celebrity-default-medium.png',
 				//当前设备可用高度
 				wh:0,
 				cateList:[],
