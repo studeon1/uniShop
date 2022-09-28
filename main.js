@@ -1,12 +1,14 @@
 
-// import store from './store'
+import {createSSRApp} from 'vue'
+import App from './App'
+import store from '@/store/store.js'
 // 导入网络请求包
 import { $http } from '@escook/request-miniprogram'
 
 
 uni.$http = $http
 
-//请求的根路径
+//请求的根路径a
 $http.baseUrl='https://api-ugo-web.itheima.net'
 // console.log(uni.$http)
 // 请求拦截器
@@ -62,10 +64,10 @@ uni.$showMsg = function(title='数据请求失败！',duration=1500){
 import Vue from 'vue'
 Vue.config.productionTip = false
 Vue.prototype.$http = $http
-// Vue.prototype.$store = store
+Vue.prototype.$store = store
 App.mpType = 'app'
 const app = new Vue({
-  // store,
+  store,
   ...App
 })
 app.$mount()
@@ -74,12 +76,10 @@ app.$mount()
 
 // Vue3部分
 // #ifdef VUE3
-import {
-  createSSRApp
-} from 'vue'
+
 export function createApp() {
   const app = createSSRApp(App)
-  // app.use(store)
+  app.use(store)
   app.config.globalProperties.$http = $http
   return {
     app

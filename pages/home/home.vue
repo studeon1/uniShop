@@ -31,8 +31,8 @@
 						<image :src="item.product_list[0].image_src" :style="{width:item.product_list[0].image_width + 'rpx'}" mode="widthFix"></image>
 					</navigator>
 					<!-- 右侧小图片的盒子 -->
-					<view class="right-img-box">
-						<navigator class="right-img-item" v-for="(item2,i2) in item.product_list" :key="i2" v-if="i2 !== 0" :url="item2.url">
+					<view class="right-img-box" v-if="i2 !== 0">
+						<navigator class="right-img-item" v-for="(item2,i2) in item.product_list" :key="i2" :url="item2.url">
 							
 							<image :src="item2.image_src" :style="{width:item2.image_width + 'rpx'}" mode="widthFix" v-if="i2 !== 0"></image>
 						</navigator>
@@ -44,7 +44,9 @@
 </template>
 
 <script>
+	import badgeMix from '@/mixins/tabbar-badge.js'
 	export default {
+		mixins:[badgeMix],
 		data() {
 			return {
 				//这是轮播图的数据列表
@@ -53,6 +55,9 @@
 				navList:[],
 				floorList:[]
 			}
+		},
+		computed:{
+			
 		},
 		onLoad() {
 			//调用方法，获取轮播图的数据

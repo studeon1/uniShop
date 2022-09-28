@@ -54,7 +54,13 @@
         "setting" : {
             "urlCheck" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+		"requiredPrivateInfos": [
+		    "getLocation",
+		    "onLocationChange",
+		    "startLocationUpdateBackground",
+		    "chooseAddress"
+		 ]
     },
     "vueVersion" : "3"
 }

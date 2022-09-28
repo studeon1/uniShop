@@ -19,5 +19,8 @@
   "homepage": "https://github.com/studeon1/uniShop#readme",
   "dependencies": {
     "@escook/request-miniprogram": "^0.2.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.2"
   }
 }
