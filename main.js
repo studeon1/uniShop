@@ -8,14 +8,21 @@ import { $http } from '@escook/request-miniprogram'
 
 uni.$http = $http
 
-//请求的根路径a
-$http.baseUrl='https://api-ugo-web.itheima.net'
+//请求的根路径a 'https://api-ugo-web.itheima.net'
+$http.baseUrl= 'https://api-hmugo-web.itheima.net'
 // console.log(uni.$http)
 // 请求拦截器
 $http.beforeRequest = function(options){
 	uni.showLoading({
 		title:'数据加载中...'
 	})
+	console.log(store)
+	//判断是否为有权限的API接口
+	if(options.url.indexOf('/my/') !== -1){
+		options.header = {
+			Authorization:store.state.m_user.token
+		}
+	}
 }
 
 // 响应拦截器
